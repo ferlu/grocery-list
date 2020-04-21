@@ -1,0 +1,58 @@
+/* Colors 
+	PINK 		= 	#de8d8c
+	SOFT PINK 	= 	#eeb6b6
+*/
+
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-header {
+	background: url('../assets/background.png');
+	background-size: cover;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* My styles */
+.header {
+	text-shadow: 0px 3px 0px #de8d8d;
+}
+.App .pink-button {
+	background: white;
+	color: #de8d8c;
+	font-weight: 600;
+}
+
+.App .pink-button:hover,
+.App .pink-button:active,
+.App .pink-button:focus {
+	color: #bd7473;
+	text-decoration: none;
+	box-shadow: 0 0 0 2px #de8d8c;
+}
