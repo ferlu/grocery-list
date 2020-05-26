@@ -1,17 +1,30 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Home } from './views/Home';
+import { Dashboard } from './views/Dashboard';
+
 import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+	// let path = 'home';
+	// switch (path) {
+	// 	case 'home':
+	// 		return <Home />;
+	// 	default:
+	// 		return <Dashboard />;
+	// }
 	return (
-		<div className="App">
-			<header className="App-header">
-				<h1 className="header">Minimal grocery list</h1>
-				<button type="button" className="btn btn-link pink-button">
-					Start now
-				</button>
-			</header>
-		</div>
+		<Router>
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+				<Route path="/dashboard">
+					<Dashboard />
+				</Route>
+			</Switch>
+		</Router>
 	);
 }
 
