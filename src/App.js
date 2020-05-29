@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './views/Home';
-import { Dashboard } from './views/Dashboard';
+import Dashboard from './views/Dashboard';
 
 import './styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';

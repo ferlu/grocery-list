@@ -8,8 +8,13 @@ export function Home() {
 		<div className="App">
 			<header className="App-header">
 				<h1 className="header">Minimal grocery list</h1>
-				<button type="button" className="btn btn-link pink-button">
-					<Link to="/dashboard">Start now</Link>
+				<button
+					type="button"
+					className="btn btn-link pink-button text-decoration-none"
+				>
+					<Link to="/dashboard" className="text-decoration-none text-primary">
+						Start now
+					</Link>
 				</button>
 			</header>
 		</div>
