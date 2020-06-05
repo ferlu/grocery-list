@@ -7,7 +7,7 @@ export function Home() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<h1 className="header">Minimal grocery list</h1>
+				<h1 className="header">Minimal shopping list</h1>
 				<button
 					type="button"
 					className="btn btn-link pink-button text-decoration-none"
