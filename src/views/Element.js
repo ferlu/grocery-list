@@ -1,43 +1,65 @@
 import React, { Component } from 'react';
+import Lottie from 'react-lottie';
+import checkboxAnimation from '../lotties/checkbox';
+
+const defaultOptions = {
+	loop: false,
+	autoplay: false,
+	animationData: checkboxAnimation,
+	rendererSettings: {},
+};
 
 export default class Element extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			isStopped: true,
+		};
+		this.animationRef = null;
 	}
 	componentDidUpdate() {
 		console.log(this.props);
+		if (this.animationRef) {
+			this.animationRef.anim.stop(10, true);
+		}
 	}
-	editItemName() {
-		console.log('edit name');
+	editItem() {
+		console.log('edit/delete');
 	}
-	decreaseQty(id, qty) {
-		console.log(id, qty);
-	}
-	increaseQty(id, qty) {
-		console.log(id, qty);
+
+	handleQtyChange() {
+		console.log('change qty');
 	}
 
 	render() {
 		return (
-			<div className="div my-2">
+			<div className="div my-3">
 				<div className="row">
-					<div className="col-7 col-sm-10">
-						<div className="d-flex border bg-white p-3">
-							<span className="text-left">{this.props.item.label}</span>
+					<div className="col-7 col-sm-10 pointer" onClick={this.editItem}>
+						<div className="d-flex">
 							<button
-								className="btn link d-flex p-0 ml-auto mr-0"
-								onClick={this.editItemName}>
-								<span role="img" aria-label="write">
-									✏️
-								</span>
+								className="btn link position-absolute"
+								onClick={() =>
+									this.setState({ isStopped: !this.state.isStopped })
+								}>
+								<div className="lottie-checkbox position-absolute">
+									<Lottie
+										isStopped={this.state.isStopped}
+										options={defaultOptions}
+										height={110}
+										width={110}
+									/>
+								</div>
 							</button>
+							<span className="text-left ml-4 pl-1">
+								{this.props.item.label}
+							</span>
 						</div>
 					</div>
-					<div className="col-3 col-sm-2">
-						<div className="border bg-white py-3 px-1 text-center text-light">
-							<button
-								className="btn btn-outline-dark badge"
+					<div className="col-3 col-sm-2 border-left ">
+						<div className="pl-2">
+							{/* <button
+								className="btn btn-primary badge text-light link"
 								onClick={() =>
 									this.decreaseQty(this.props.item.value, this.props.item.qty)
 								}>
@@ -47,12 +69,21 @@ export default class Element extends Component {
 								{this.props.item.qty}
 							</button>
 							<button
-								className="btn btn-outline-dark badge"
+								className="btn btn-primary badge text-light"
 								onClick={() =>
 									this.increaseQty(this.props.item.value, this.props.item.qty)
 								}>
 								+
-							</button>
+							</button> */}
+							<input
+								name="qty"
+								type="number"
+								className="w-100 border-0 text-center text-primary"
+								value={this.props.item.qty}
+								min="0"
+								max="100"
+								onChange={this.handleQtyChange}
+							/>
 						</div>
 					</div>
 				</div>

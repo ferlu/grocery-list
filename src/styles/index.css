@@ -6,7 +6,8 @@ body {
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 html,
@@ -14,4 +15,14 @@ body,
 #root {
 	height: 100%;
 	min-height: 100%;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.lottie-checkbox {
+	margin: 0px;
+	left: -50px;
+	top: -44px;
 }

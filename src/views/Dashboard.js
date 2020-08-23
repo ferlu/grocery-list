@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import itemsList from '../items.json';
 import CreatableSelect from 'react-select/creatable';
 import moment from 'moment';
-import { ListGroup } from 'react-bootstrap';
 import Element from './Element';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/App.css';
-
 export default class Dashboard extends Component {
 	constructor(props) {
 		super(props);
@@ -14,6 +12,7 @@ export default class Dashboard extends Component {
 			items: [],
 		};
 	}
+
 	handleNewItem(item) {
 		if (item) {
 			if (!!this.state.items.find((element) => element.value === item.value)) {
@@ -33,9 +32,7 @@ export default class Dashboard extends Component {
 			} else {
 				if (!item.qty) item.qty = 1;
 				let newElement = this.state.items.concat(item);
-				this.setState({ items: newElement }, () => {
-					console.log(this.state);
-				});
+				this.setState({ items: newElement });
 			}
 		}
 	}
@@ -62,6 +59,16 @@ export default class Dashboard extends Component {
 							</p>
 							<CreatableSelect
 								isClearable
+								theme={(theme) => ({
+									...theme,
+									borderRadius: 0,
+									colors: {
+										...theme.colors,
+										primary25: '#f9dedd',
+										primary: '#de8d8b',
+										primary50: '#fbcecd',
+									},
+								})}
 								options={itemsList.map((item) => ({
 									value: item.id,
 									label: item.name,
@@ -73,13 +80,11 @@ export default class Dashboard extends Component {
 					</div>
 				</div>
 				<div className="container p-4">
-					<div className="row">
-						<div className="col">
-							<ListGroup>
-								{this.state.items.map((item, index) => (
-									<Element key={index} className="d-flex" item={item} />
-								))}
-							</ListGroup>
+					<div className="row text-center mx-auto">
+						<div className="col border bg-white">
+							{this.state.items.map((item, index) => (
+								<Element key={index} className="d-flex" item={item} />
+							))}
 						</div>
 					</div>
 				</div>
