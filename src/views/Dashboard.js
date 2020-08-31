@@ -79,15 +79,17 @@ export default class Dashboard extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="container p-4">
-					<div className="row text-center mx-auto">
-						<div className="col border bg-white">
-							{this.state.items.map((item, index) => (
-								<Element key={index} className="d-flex" item={item} />
-							))}
+				{!!this.state.items.length && (
+					<div className="container p-4">
+						<div className="row text-center mx-auto">
+							<div className="col border bg-white">
+								{this.state.items.map((item, index) => (
+									<Element key={index} className="d-flex" item={item} />
+								))}
+							</div>
 						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		);
 	}

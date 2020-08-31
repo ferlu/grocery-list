@@ -14,11 +14,14 @@ export default class Element extends Component {
 		super(props);
 		this.state = {
 			isStopped: true,
+			itemQty: 0,
 		};
 		this.animationRef = null;
 	}
+	componentDidMount() {
+		this.setInitialQty();
+	}
 	componentDidUpdate() {
-		console.log(this.props);
 		if (this.animationRef) {
 			this.animationRef.anim.stop(10, true);
 		}
@@ -28,7 +31,12 @@ export default class Element extends Component {
 	}
 
 	handleQtyChange() {
-		console.log('change qty');
+		const qty = this.state.itemQty + 1;
+		this.setState({ itemQty: qty });
+	}
+
+	setInitialQty() {
+		this.setState({ itemQty: this.props.item.qty });
 	}
 
 	render() {
@@ -79,10 +87,9 @@ export default class Element extends Component {
 								name="qty"
 								type="number"
 								className="w-100 border-0 text-center text-primary"
-								value={this.props.item.qty}
+								value={this.state.itemQty}
 								min="0"
-								max="100"
-								onChange={this.handleQtyChange}
+								onChange={() => this.handleQtyChange()}
 							/>
 						</div>
 					</div>
